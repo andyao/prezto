@@ -35,8 +35,10 @@ export CCIOS_DB="crimecity_player_ios_1"
 export MWIOS_ENV="dev"
 export MWIOS_DIR="$PROJECT_DIRECTORY/iphone-server/CrimeCity/StaminaServer"
 export MWIOS_DB="modernwar_player_ios_1"
-alias bean='/usr/local/bin/beanstalkd -d -l 127.0.0.1 -p 11300'
+export SLIOS_DIR="$PROJECT_DIRECTORY/casino-server"
+export SLIOS_CLIENT_DIR="$PROJECT_DIRECTORY/casino-client"
 
+alias bean='/usr/local/bin/beanstalkd -d -l 127.0.0.1 -p 11300'
 alias rake='noglob rake'
 alias git='noglob git'
 alias find='noglob find'
