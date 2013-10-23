@@ -10,38 +10,39 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh
-
 # Customize to your needs...
 export LC_ALL=en_US.UTF-8
-export ANDROID_HOME=/Volumes/Sunny/Andy/Devel/android-sdk-macosx
+export ANDROID_HOME=$HOME/dev/android-sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
-export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+
+#export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+
+export H2_HOME="$HOME/dev/tools/h2"
+export PATH=$PATH:$H2_HOME/bin
 
 export MYSQL="/usr/local/bin/mysql"
 export MYSQL_USER="root"
 export MYSQL_SOCK="/tmp/mysql.sock"
 
-export CCIOS_ENV="dev"
-export PROJECT_DIRECTORY=/Volumes/Sunny/Andy/code/projects
-export CCIOS_DIR="$PROJECT_DIRECTORY/iphone-server/CrimeCity/StaminaServer"
-export IOS_DIR="$PROJECT_DIRECTORY/iphone-server"
+export PROJECTS="$HOME/code/projects"
+export FUNZIO_DIR="$HOME/code/projects"
 export IOS_ENV=dev
-export MYSQL="/usr/local/bin/mysql"
-export MYSQL_USER="root"
-export MYSQL_SOCK="/tmp/mysql.sock"
-export CCIOS_DB="crimecity_player_ios_1"
-export MWIOS_ENV="dev"
-export MWIOS_DIR="$PROJECT_DIRECTORY/iphone-server/CrimeCity/StaminaServer"
-export MWIOS_DB="modernwar_player_ios_1"
-export SLIOS_DIR="$PROJECT_DIRECTORY/casino-server"
-export SLIOS_CLIENT_DIR="$PROJECT_DIRECTORY/casino-client"
+export SLIOS_DIR="$PROJECTS/casino-server"
+export SLIOS_CLIENT_DIR="$PROJECTS/casino-client"
+export GAME_DATA_DIR="$PROJECTS/game-data"
+
+alias sza="cd $FUNZIO_DIR/casino-assets"
+alias szs="cd $FUNZIO_DIR/casino-server"
+
+alias szhr="$FUNZIO_DIR/casino-server/scripts/dev/hard_reload_db.sh slios pl"
+alias szmr="$FUNZIO_DIR/casino-server/scripts/dev/restart_cache.sh"
 
 alias bean='/usr/local/bin/beanstalkd -d -l 127.0.0.1 -p 11300'
 alias rake='noglob rake'
 alias git='noglob git'
 alias find='noglob find'
 alias mou="open /Applicaions/Mou.app"
+alias vi="/usr/local/bin/vim"
 
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin:~/.rvm/bin:$PATH
