@@ -36,3 +36,7 @@ function _completemarks {
 
 compctl -K _completemarks jump
 compctl -K _completemarks unmark
+
+settitle() { printf "\e]0;$@\a" }
+dir_in_title() { settitle `basename $PWD` }
+chpwd_functions=(dir_in_title)

@@ -38,6 +38,8 @@ alias szs="cd $FUNZIO_DIR/casino-server"
 alias szhr="$FUNZIO_DIR/casino-server/scripts/dev/hard_reload_db.sh slios pl"
 alias szmr="$FUNZIO_DIR/casino-server/scripts/dev/restart_cache.sh"
 
+alias sztest="$FUNZIO_DIR/casino-server/server-core/tests/phpunit.php --colors"
+
 alias bean='/usr/local/bin/beanstalkd -d -l 127.0.0.1 -p 11300'
 alias mou="open /Applicaions/Mou.app"
 alias vi="/usr/local/bin/vim"
