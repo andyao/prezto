@@ -15,8 +15,9 @@ export LC_ALL=en_US.UTF-8
 export ANDROID_HOME=$HOME/dev/android-sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
-#export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
+export CLASSPATH=.:$JAVA_HOME/lib
 
 export H2_HOME="$HOME/dev/tools/h2"
 export PATH=$PATH:$H2_HOME/bin
@@ -25,23 +26,41 @@ export MYSQL="/usr/local/bin/mysql"
 export MYSQL_USER="root"
 export MYSQL_SOCK="/tmp/mysql.sock"
 
-export PROJECTS="$HOME/code/projects"
-export FUNZIO_DIR="$HOME/code/projects"
+# Casino project settings.
+#export PROJECTS="$HOME/code/projects"
+#export FUNZIO_DIR="$HOME/code/projects"
+#export IOS_ENV=dev
+#export SLIOS_DIR="$PROJECTS/casino-server"
+#export SLIOS_CLIENT_DIR="$PROJECTS/casino-client"
+#export GAME_DATA_DIR="$PROJECTS/game-data"
+#alias sza="cd $FUNZIO_DIR/casino-assets"
+#alias szs="cd $FUNZIO_DIR/casino-server"
+#alias szhr="$FUNZIO_DIR/casino-server/scripts/dev/hard_reload_db.sh slios pl"
+#alias szmr="$FUNZIO_DIR/casino-server/scripts/dev/restart_cache.sh"
+#alias sztest="$FUNZIO_DIR/casino-server/server-core/tests/phpunit.php --colors"
+
+# RPG+ project settings.
+export CCIOS_ENV="dev"
+export PROJECT_DIRECTORY="~/code/project/rpg-dr"
+
+export CCIOS_DIR="$PROJECT_DIRECTORY/CrimeCity/StaminaServer"
+export IOS_DIR="$PROJECT_DIRECTORY/CrimeCity/StaminaServer"
 export IOS_ENV=dev
-export SLIOS_DIR="$PROJECTS/casino-server"
-export SLIOS_CLIENT_DIR="$PROJECTS/casino-client"
-export GAME_DATA_DIR="$PROJECTS/game-data"
+export CCIOS_DB="crimecity_player_ios_1"
 
-alias sza="cd $FUNZIO_DIR/casino-assets"
-alias szs="cd $FUNZIO_DIR/casino-server"
+export MWIOS_ENV="dev"
+export MWIOS_DIR="$PROJECT_DIRECTORY/CrimeCity/StaminaServer"
+export MWIOS_DB="modernwar_player_ios_1"
 
-alias szhr="$FUNZIO_DIR/casino-server/scripts/dev/hard_reload_db.sh slios pl"
-alias szmr="$FUNZIO_DIR/casino-server/scripts/dev/restart_cache.sh"
-
-alias sztest="$FUNZIO_DIR/casino-server/server-core/tests/phpunit.php --colors"
+export RPG_DR_ENV=dev
+export RPG_DR_DIR='~/code/projects/rpg-dr'
+export RPG_DR_CLIENT_DIR='~/code/projects/rpg-dr-and'
+export CC_DIR="/Users/andy.yao/code/projects/rpg-cc-and"
+export MW_DIR="/Users/andy.yao/code/projects/rpg-mw-and"
 
 alias bean='/usr/local/bin/beanstalkd -d -l 127.0.0.1 -p 11300'
 alias mou="open /Applicaions/Mou.app"
 alias vi="/usr/local/bin/vim"
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:~/.rvm/bin:$PATH
+export PATH=~/bin:~/dev/gradle-1.11/bin:/usr/local/bin:/usr/local/sbin:~/.rvm/bin:$PATH
+export HOMEBREW_GITHUB_API_TOKEN=28668c3e24316c5e90e8a2efe48fddb4c386c749
