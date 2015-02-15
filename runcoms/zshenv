@@ -15,12 +15,9 @@ export LC_ALL=en_US.UTF-8
 export ANDROID_HOME=$HOME/dev/android-sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
-export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+#export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
 export CLASSPATH=.:$JAVA_HOME/lib
-
-export H2_HOME="$HOME/dev/tools/h2"
-export PATH=$PATH:$H2_HOME/bin
 
 export MYSQL="/usr/local/bin/mysql"
 export MYSQL_USER="root"
