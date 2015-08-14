@@ -21,12 +21,12 @@ function +vi-git-aheadbehind() {
     # for git prior to 1.7
     # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
     ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | sed -e 's/^ *//')
-    (( $ahead )) && gitstatus+=( "%B%F{red} +${ahead}%f%b" )
+    (( $ahead )) && gitstatus+=( "%B%F{red}/+${ahead}%f%b" )
 
     # for git prior to 1.7
     # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
     behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | sed -e 's/^ *//')
-    (( $behind )) && gitstatus+=( "%B%F{red} -${behind}%f%b" )
+    (( $behind )) && gitstatus+=( "%B%F{red}/-${behind}%f%b" )
 
     hook_com[misc]+=${(j::)gitstatus}
 }
@@ -35,7 +35,7 @@ function +vi-git-stashes() {
     local -a stashes
     if [[ -s ${hook_com[base]}/.git/refs/stash ]] ; then
         stashes=$(git stash list 2>/dev/null | wc -l | sed -e 's/^ *//')
-        hook_com[misc]+=" %B${_prompt_focus_colors[6]}(${stashes} stashed)%f%b"
+        hook_com[misc]+="%B${_prompt_focus_colors[1]}(${stashes} stashed)%f%b"
     fi
 
     # hook_com[misc]+=${(j::)gitstatus}
@@ -44,9 +44,9 @@ function +vi-git-stashes() {
 function prompt_focus_precmd {
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    branch_format="${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%b%f%u%c%m${_prompt_focus_colors[4]}●%f"
+    branch_format=" ${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%b %f%u%c%m${_prompt_focus_colors[4]}/untracked%f"
   else
-    branch_format="${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%b%f%u%c%m"
+    branch_format=" ${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%b %f%u%c%m"
   fi
 
   zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
@@ -75,7 +75,7 @@ function prompt_focus_setup {
       "%F{81}"  # Turquoise
       "%F{166}" # Orange
       "%F{135}" # Purple
-      "%F{161}" # Hotpink
+      "%F{160}" # Hotpink
       "%F{229}" # Yellow
       "%F{240}" # Grey
       "%F{118}" # Green
@@ -101,8 +101,8 @@ function prompt_focus_setup {
   #   %S - path in the repository
   local branch_format="(${_prompt_focus_colors[1]}%b%f%u%c)"
   local action_format="(${_prompt_focus_colors[7]}%a%f)"
-  local unstaged_format="${_prompt_focus_colors[2]}●%f"
-  local staged_format="${_prompt_focus_colors[7]}●%f"
+  local unstaged_format="${_prompt_focus_colors[2]}/not-staged%f"
+  local staged_format="${_prompt_focus_colors[7]}/staged%f"
 
   # Set vcs_info parameters.
   #   zstyle ':vcs_info:*' enable bzr git hg svn
@@ -120,7 +120,7 @@ function prompt_focus_setup {
 
   # Define prompts.
   PROMPT="
-${_prompt_focus_colors[6]}╭─[%W %*] in%f ${_prompt_focus_colors[5]}%~%f "'${vcs_info_msg_0_}'"
+${_prompt_focus_colors[6]}╭─[%W %*]%f ${_prompt_focus_colors[6]}%2d%f"'${vcs_info_msg_0_}'"
 ${_prompt_focus_colors[6]}╰─"'$python_info[virtualenv]'"$%f "
   RPROMPT=''
 }

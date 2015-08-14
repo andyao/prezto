@@ -34,10 +34,8 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'osx' \
   'prompt' \
-  'rails' \
-  'ruby' \
   'spectrum' \
-  'syntax-highlighting'
+  'syntax-highlighting' \
   'terminal' \
   'utility' \
 
