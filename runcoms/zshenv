@@ -11,12 +11,10 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 # Customize to your needs...
-export LC_ALL=en_US.UTF-8
-export ANDROID_HOME=$HOME/Developer/android-sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/.rvm/bin
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
 
-#export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
 export CLASSPATH=.:$JAVA_HOME/lib
 
 export MYSQL="/usr/local/bin/mysql"
