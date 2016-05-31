@@ -9,20 +9,3 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
-
-# Customize to your needs...
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
-export CLASSPATH=.:$JAVA_HOME/lib
-
-export MYSQL="/usr/local/bin/mysql"
-export MYSQL_USER="root"
-export MYSQL_SOCK="/tmp/mysql.sock"
-
-alias bean='/usr/local/bin/beanstalkd -d -l 127.0.0.1 -p 11300'
-alias mou="open /Applicaions/Mou.app"
-alias vi="/usr/local/bin/vim"
-
-export HOMEBREW_GITHUB_API_TOKEN=28668c3e24316c5e90e8a2efe48fddb4c386c749

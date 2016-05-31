@@ -37,7 +37,7 @@ dir_in_title() { settitle `basename $PWD` }
 chpwd_functions=(dir_in_title)
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
 export CLASSPATH=.:$JAVA_HOME/lib
 
 export MYSQL="/usr/local/bin/mysql"
@@ -49,4 +49,6 @@ export HOMEBREW_GITHUB_API_TOKEN=28668c3e24316c5e90e8a2efe48fddb4c386c749
 export SDKMAN_DIR=$HOME/.sdkman
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-export PATH=$HOME/.rbenv/shims:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+export GOPATH=$HOME/Workspace/go
+export PATH=$HOME/bin:$HOME/.rbenv/shims:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
