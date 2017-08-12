@@ -9,3 +9,31 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+export SDKMAN_DIR=$HOME/.sdkman
+export MARKPATH=$HOME/.marks
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
+export CLASSPATH=.:$JAVA_HOME/lib
+
+export MYSQL="/usr/local/bin/mysql"
+export MYSQL_HOST="www.honest.dev"
+export MYSQL_USER="root"
+export MYSQL_PASSWORD=""
+export MYSQL_NGP_TEST_DB=honest_ngp_test
+export MYSQL_SOCK="/tmp/mysql.sock"
+export HOMEBREW_GITHUB_API_TOKEN=b13f38285b2b7897ea26dd42751445269da01818
+
+export GOPATH=$HOME/Workspace/go
+export PATH=$HOME/Workspace/go/bin:$HOME/bin:$HOME/.rbenv/shims:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+export PID_PATH=/tmp
+#export DOCKER_API_VERSION=1.23
+
+# NGP Config
+export VERBOSE=1
+export SQL_VERBOSE=1
+export CRON_SYNC_DATA="@every 1h"
+export API_RABBIT_DSN=amqp://guest:guest@rabbit.honest.dev:5672/
+
+

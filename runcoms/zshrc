@@ -11,7 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-export MARKPATH=$HOME/.marks
 function jump {
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
@@ -36,19 +35,15 @@ settitle() { printf "\e]0;$@\a" }
 dir_in_title() { settitle `basename $PWD` }
 chpwd_functions=(dir_in_title)
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
-export CLASSPATH=.:$JAVA_HOME/lib
-
-export MYSQL="/usr/local/bin/mysql"
-export MYSQL_USER="root"
-export MYSQL_SOCK="/tmp/mysql.sock"
-export HOMEBREW_GITHUB_API_TOKEN=28668c3e24316c5e90e8a2efe48fddb4c386c749
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR=$HOME/.sdkman
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-export GOPATH=$HOME/Workspace/go
-export PATH=$HOME/bin:$HOME/.rbenv/shims:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias vi="vim"
+
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
