@@ -37,16 +37,18 @@ settitle() { printf "\e]0;$@\a" }
 dir_in_title() { settitle `basename $PWD` }
 chpwd_functions=(dir_in_title)
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias vi="vim"
+source /Library/GoogleCorpSupport/srcfs/shell_completion/enable_completion.sh
 
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function renew_gcert_ifneeded() {
+  HOURS_TILL_EOB=$((20 - $(date +%-H)))h
+  gcertstatus -ssh_cert_comment=corp/normal -check_remaining=$HOURS_TILL_EOB || gcert
+}
+function renew_bagpipe_ifneeded() {
+  p4 info > /dev/null 2>&1 || p4 bagpipe-prodaccess
+}
+function prodaccess() {
+  renew_gcert_ifneeded && renew_bagpipe_ifneeded
+}
