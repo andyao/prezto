@@ -10,30 +10,24 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export SDKMAN_DIR=$HOME/.sdkman
+alias sc='/google/data/rw/projects/research/handwriting/scripts/snipdroid'
+alias aswb-with-remote-device='ANDROID_ADB_SERVER_PORT=6037 /opt/android-studio-with-blaze-stable/bin/studio.sh'
+alias blaze-phonesky='blaze build //java/com/google/android/apps/play/store:phonesky_classic_dev_all'
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 export MARKPATH=$HOME/.marks
 
-export ANDROID_HOME=$HOME/Library/android/sdk
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
-export JAVA_HOME=/Users/andy/.sdkman/candidates/java/current
+export ANDROID_HOME=/usr/local/google/home/mirrorwis/Android/Sdk
+export JAVA_HOME=/usr/local/buildtools/java/jdk
 export CLASSPATH=.:$JAVA_HOME/lib
 
-export MYSQL="/usr/local/bin/mysql"
-export MYSQL_HOST="www.honest.dev"
-export MYSQL_USER="root"
-export MYSQL_PASSWORD=""
-export MYSQL_NGP_TEST_DB=honest_ngp_test
-export MYSQL_SOCK="/tmp/mysql.sock"
+export P4DIFF='colordiff -u'
 export HOMEBREW_GITHUB_API_TOKEN=b13f38285b2b7897ea26dd42751445269da01818
+export PATH=$HOME/bin:$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin
 
-export GOPATH=$HOME/Workspace/go
-export PATH=$HOME/Workspace/go/bin:$HOME/bin:$HOME/.rbenv/shims:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
-export PID_PATH=/tmp
-
-# NGP Config
-export VERBOSE=1
-export SQL_VERBOSE=1
-export CRON_SYNC_DATA="@every 1h"
-export API_RABBIT_DSN=amqp://guest:guest@rabbit.honest.dev:5672/
-
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+# Crow (Android emulator)
+#fpath=(/google/data/ro/teams/mobile_eng_prod/crow $fpath)
+#compdef _crow /google/data/ro/teams/mobile_eng_prod/crow/crow.par
+#alias crow=/google/data/ro/teams/mobile_eng_prod/crow/crow.par
