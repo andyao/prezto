@@ -40,6 +40,7 @@ chpwd_functions=(dir_in_title)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias vi="vim"
+alias ptask="TASKDATA=~/.ptask task"
 source /Library/GoogleCorpSupport/srcfs/shell_completion/enable_completion.sh
 
 function renew_gcert_ifneeded() {
