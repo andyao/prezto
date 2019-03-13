@@ -33,13 +33,18 @@ function prompt_minimal_setup {
   add-zsh-hook precmd prompt_minimal_precmd
 
   # Set vcs_info parameters.
-  zstyle ':vcs_info:*' enable bzr git hg svn
+  zstyle ':vcs_info:*' enable git hg
   zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:hg*:*' use-simple true
+  zstyle ':vcs_info:*' get-bookmarks true
+  zstyle ':vcs_info:*' get-revision true
+  zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:*' get-mq true
   zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
   zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f'
-  zstyle ':vcs_info:*' formats ' - [%b%c%u]'
-  zstyle ':vcs_info:*' actionformats " - [%b%c%u|%F{cyan}%a%f]"
-  zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b|%F{cyan}%r%f'
+  zstyle ':vcs_info:*' formats ' - [%8.8i %m]'
+  zstyle ':vcs_info:*' actionformats " - [%b%c%u%m|%F{cyan}%a%f]"
+  zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%m|%F{cyan}%r%f'
   zstyle ':vcs_info:git*+set-message:*' hooks git_status
 
   # Define prompts.

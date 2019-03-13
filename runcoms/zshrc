@@ -41,3 +41,4 @@ alias ptask="TASKDATA=~/.ptask task"
 
 source /etc/bash_completion.d/g4d
 
+alias st='/google/src/cloud/mirrorwis/systrace/google3/third_party/java/android/android_sdk_linux/platform-tools/systrace/systrace.py --app=com.android.vending -b 16000'
