@@ -41,12 +41,33 @@ function +vi-git-stashes() {
     # hook_com[misc]+=${(j::)gitstatus}
 }
 
+# hg: Time since last commit
++vi-hg-time-since() {
+    local now=`date +%s`
+    local last=$now
+    if [ -f "$hook_com[base]/.hg/undo.dirstate" ]; then
+        local last=`last-modified $hook_com[base]/.hg/undo.dirstate`
+    fi
+    local since=$(( $now - $last ))
+    if [[ $since -lt 3600 ]]; then
+        since=$(( $since / 60 ))m
+    elif [[ $since -lt 86400 ]]; then
+        since=$(( $since / 3600 ))h
+    else
+        since=$(( $since / 86400 ))d
+    fi
+    # jam time-since in front of branch
+    hook_com[vcs]=$since
+}
+
 function prompt_focus_precmd {
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
     branch_format=" ${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%b %f%m%u%c${_prompt_focus_colors[4]}/untracked%f"
+  elif [[ -n $(hg status 2> /dev/null) ]]; then
+    branch_format=" ${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%8.8i %m%u%c%f${_prompt_focus_colors[4]}/unstaged%f"
   else
-    branch_format=" ${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%b %f%m%u%c"
+    branch_format=" ${_prompt_focus_colors[6]}on%f ${_prompt_focus_colors[5]}%8.8i %m%u%c%f"
   fi
 
   zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
@@ -109,7 +130,12 @@ function prompt_focus_setup {
 
   # Set vcs_info parameters.
   #   zstyle ':vcs_info:*' enable bzr git hg svn
-  zstyle ':vcs_info:*' enable git svn
+  zstyle ':vcs_info:*' enable git hg
+
+  zstyle ':vcs_info:*:prompt:*' use-simple false
+  zstyle ':vcs_info:*:prompt:*' get-bookmarks true
+  zstyle ':vcs_info:*:prompt:*' get-revision true
+  zstyle ':vcs_info:*:prompt:*' get-mq true
   zstyle ':vcs_info:*:prompt:*' check-for-changes true
   zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
   zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
@@ -118,13 +144,10 @@ function prompt_focus_setup {
   zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
   zstyle ':vcs_info:git*+set-message:*' hooks git-aheadbehind git-stashes
 
-  # Set python-info parameters.
-  zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
-
   # Define prompts.
   PROMPT="
 ${_prompt_focus_colors[6]}╭─[%W %*]%f ${_prompt_focus_colors[8]}%2d%f"'${vcs_info_msg_0_}'"
-${_prompt_focus_colors[6]}╰─"'$python_info[virtualenv]'"$%f "
+${_prompt_focus_colors[6]}╰─$%f "
   RPROMPT=''
 }
 
