@@ -132,7 +132,7 @@ function prompt_focus_setup {
   #   zstyle ':vcs_info:*' enable bzr git hg svn
   zstyle ':vcs_info:*' enable git hg
 
-  zstyle ':vcs_info:*:prompt:*' use-simple false
+  zstyle ':vcs_info:*:prompt:*' use-simple true
   zstyle ':vcs_info:*:prompt:*' get-bookmarks true
   zstyle ':vcs_info:*:prompt:*' get-revision true
   zstyle ':vcs_info:*:prompt:*' get-mq true
